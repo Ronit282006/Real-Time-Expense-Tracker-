@@ -1,0 +1,63 @@
+# FastAPI
+fastapi==0.118.0
+uvicorn[standard]==0.37.0
+
+# Database
+sqlalchemy==2.0.43
+psycopg[binary]==3.2.10
+alembic==1.16.5
+
+# Validation & Settings
+pydantic==2.11.7
+pydantic-settings==2.10.1
+email-validator==2.3.0
+
+# Authentication & Security
+python-jose[cryptography]==3.5.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.3.0
+
+# Form Data
+python-multipart==0.0.20
+
+# Data Processing
+pandas==2.3.2
+openpyxl==3.1.5
+xlsxwriter==3.2.5
+
+# File Handling
+aiofiles==24.1.0
+
+# HTTP Client
+httpx==0.28.1
+
+# Environment Variables
+python-dotenv==1.1.1
+
+# Logging
+loguru==0.7.3
+
+# Rate Limiting
+slowapi==0.1.9
+
+# Testing
+pytest==8.4.2
+pytest-asyncio==1.2.0
+
+# Optional Caching (Redis)
+redis==6.4.0
+
+# Optional Background Jobs
+celery==5.5.3
+
+# PDF Report Generation
+reportlab==4.4.3
+
+# Excel Export
+openpyxl==3.1.5
+
+# API Documentation Helpers
+orjson==3.11.3
+
+# Production Server
+gunicorn==23.0.0
