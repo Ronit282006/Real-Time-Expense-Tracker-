@@ -115,3 +115,7 @@ cython_debug/
 # Environment variables
 .env
 .env.*
+
+locustfile.py
+Locust_*.html
+Locust_*.json

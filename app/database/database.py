@@ -5,7 +5,7 @@ from app.config import settings
 
 DATABASE_URL = settings.DATABASE_URL
 
-engine = create_engine(DATABASE_URL)
+engine = create_engine(DATABASE_URL, pool_size=50, max_overflow=50)
 session_local = sessionmaker(bind=engine,autocommit=False, autoflush=False)
 base = declarative_base()
 

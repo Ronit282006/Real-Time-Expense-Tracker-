@@ -53,15 +53,26 @@ def get_profile(db:Session,profile_id:int , token:str):
     token_data = verify_token(token)
     if not token_data:
         raise HTTPException(status_code=401, detail="Invalid token")
+    
+    user_id = int(token_data.get("sub"))
+    if profile_id != user_id:
+        raise HTTPException(status_code=403, detail="Not authorized to view this profile")
+        
     user_data = db.query(Create_Account_Table).filter(Create_Account_Table.profile_id == profile_id).first()
     if not user_data:
         raise HTTPException(status_code=404, detail="User not found")
     return user_data
+from app.models.schema import Update_Account
 
-def update_profile(db:Session,profile_id:int, user:Create_Account , token:str):
+def update_profile(db:Session,profile_id:int, user:Update_Account , token:str):
     token_data = verify_token(token)
     if not token_data:
         raise HTTPException(status_code=401, detail="Invalid token")
+        
+    user_id = int(token_data.get("sub"))
+    if profile_id != user_id:
+        raise HTTPException(status_code=403, detail="Not authorized to update this profile")
+        
     user_data = db.query(Create_Account_Table).filter(Create_Account_Table.profile_id == profile_id).first()
     if not user_data:
         raise HTTPException(status_code=404, detail="User not found")
@@ -76,10 +87,14 @@ def delete_profile(db:Session,profile_id:int , token:str):
     token_data = verify_token(token)
     if not token_data:
         raise HTTPException(status_code=401, detail="Invalid token")    
+        
+    user_id = int(token_data.get("sub"))
+    if profile_id != user_id:
+        raise HTTPException(status_code=403, detail="Not authorized to delete this profile")
+        
     user_data = db.query(Create_Account_Table).filter(Create_Account_Table.profile_id == profile_id).first()
     if not user_data:
         raise HTTPException(status_code=404, detail="User not found")
     db.delete(user_data)
     db.commit()
     return user_data
-
