@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Import Completed</title>
+    <style>
+        body, table, td, a { text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse !important; }
+        body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; background-color: #f4f6f8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        @media screen and (max-width: 600px) {
+            .wrapper { width: 100% !important; max-width: 100% !important; }
+            .padding-mobile { padding-left: 20px !important; padding-right: 20px !important; }
+        }
+    </style>
+</head>
+<body>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f8; table-layout: fixed;">
+        <tr>
+            <td align="center" style="padding: 40px 0;">
+                <table border="0" cellpadding="0" cellspacing="0" width="600" class="wrapper" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                    <tr>
+                        <td align="center" style="background-color: #4F46E5; padding: 30px 20px;">
+                            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.5px;">Finance API</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="padding-mobile" style="padding: 40px 40px 30px 40px; text-align: left;">
+                            <h2 style="color: #1F2937; margin: 0 0 16px 0; font-size: 24px; font-weight: 600; line-height: 30px;">
+                                Hello {{user_name}},
+                            </h2>
+                            <p style="color: #4B5563; font-size: 16px; line-height: 24px; margin: 0 0 20px 0;">
+                                Your transaction import has been completed successfully. Below is a summary of the processed data.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="padding-mobile" style="padding: 0 40px 30px 40px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #F9FAFB; border-radius: 6px;">
+                                <tr>
+                                    <td style="padding: 24px;">
+                                        <h3 style="color: #1F2937; margin: 0 0 16px 0; font-size: 16px; font-weight: 600; border-bottom: 1px solid #E5E7EB; padding-bottom: 12px;">
+                                            Import Summary
+                                        </h3>
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+                                                <td style="padding: 6px 0; color: #4B5563; font-size: 14px;">Total Rows</td>
+                                                <td align="right" style="padding: 6px 0; color: #1F2937; font-size: 14px; font-weight: 600;">{{total_rows}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 6px 0; color: #4B5563; font-size: 14px;">Imported Rows</td>
+                                                <td align="right" style="padding: 6px 0; color: #059669; font-size: 14px; font-weight: 600;">{{imported_rows}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 6px 0; color: #4B5563; font-size: 14px;">Failed Rows</td>
+                                                <td align="right" style="padding: 6px 0; color: #DC2626; font-size: 14px; font-weight: 600;">{{failed_rows}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 6px 0; padding-top: 16px; color: #4B5563; font-size: 14px; border-top: 1px solid #E5E7EB;">Processing Status</td>
+                                                <td align="right" style="padding: 6px 0; padding-top: 16px; color: #059669; font-size: 14px; font-weight: 600; border-top: 1px solid #E5E7EB;">{{status}}</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="padding-mobile" style="padding: 0 40px 40px 40px; text-align: left;">
+                            <p style="color: #4B5563; font-size: 15px; line-height: 24px; margin: 0 0 16px 0;">
+                                Thank you for using our application. If you have any questions, feel free to reach out to our support team.
+                            </p>
+                            <p style="color: #4B5563; font-size: 15px; line-height: 24px; margin: 0;">
+                                Cheers,<br><strong>The Finance API Team</strong>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="padding-mobile" style="background-color: #F9FAFB; padding: 30px 40px; text-align: center;">
+                            <p style="color: #9CA3AF; font-size: 13px; line-height: 18px; margin: 0;">
+                                © 2026 Finance API. All rights reserved.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
