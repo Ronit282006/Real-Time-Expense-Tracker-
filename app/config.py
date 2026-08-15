@@ -28,10 +28,15 @@ class Settings(BaseSettings):
     # Redis
     REDIS_URL: str = "redis://localhost:6379/0"
 
-    # SMTP / Email
+    # Email — HTTP API providers (preferred; port 443 works from any host).
+    # Precedence: BREVO_API_KEY > RESEND_API_KEY > SMTP fallback.
+    BREVO_API_KEY: str = ""
+    RESEND_API_KEY: str = ""
+    MAIL_FROM: str = ""
+
+    # SMTP / Email (fallback when both API keys are empty)
     MAIL_USERNAME: str = ""
     MAIL_PASSWORD: str = ""
-    MAIL_FROM: str = ""
     MAIL_SERVER: str = "smtp.gmail.com"
     MAIL_PORT: int = 587
     MAIL_STARTTLS: bool = True
