@@ -1,0 +1,11 @@
+amount,category,type,transaction_datetime,note
+1500,Food,expense,2026-08-14 19:30:00,Dinner at pizza place
+45000,Salary,income,2026-08-01 09:00:00,Monthly salary
+800,Transport,expense,2026-08-10 08:15:00,Uber to office
+2500,Groceries,expense,2026-08-12 18:45:00,Weekly groceries
+3000,Freelance,income,2026-08-15 14:20:00,Website design project
+1200,Entertainment,expense,2026-08-13 21:00:00,Movie tickets
+600,Utilities,expense,2026-08-05 12:00:00,Phone bill
+10000,Investment,income,2026-08-08 11:30:00,Dividend payout
+3500,Shopping,expense,2026-08-11 17:10:00,New shoes
+700,Health,expense,2026-08-09 10:00:00,Pharmacy
