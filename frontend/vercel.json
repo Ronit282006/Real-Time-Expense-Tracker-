@@ -1,8 +1,16 @@
 {
   "rewrites": [
     {
+      "source": "/api/:path*/",
+      "destination": "https://real-time-expense-tracker-ee74.onrender.com/:path*/"
+    },
+    {
       "source": "/api/:path*",
       "destination": "https://real-time-expense-tracker-ee74.onrender.com/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
