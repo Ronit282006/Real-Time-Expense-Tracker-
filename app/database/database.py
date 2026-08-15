@@ -5,8 +5,13 @@ from app.config import settings
 
 DATABASE_URL = settings.DATABASE_URL
 
-engine = create_engine(DATABASE_URL, pool_size=50, max_overflow=50)
-session_local = sessionmaker(bind=engine,autocommit=False, autoflush=False)
+engine = create_engine(
+    DATABASE_URL,
+    pool_size=settings.DB_POOL_SIZE,
+    max_overflow=settings.DB_MAX_OVERFLOW,
+    pool_pre_ping=True,
+)
+session_local = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 base = declarative_base()
 
 def get_db():

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome to Our Platform!</title>
+    <style>
+        /* Reset styles for consistency across email clients */
+        body, table, td, a { text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse !important; }
+        body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; background-color: #f4f6f8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+        
+        /* Responsive rules */
+        @media screen and (max-width: 600px) {
+            .wrapper { width: 100% !important; max-width: 100% !important; }
+            .padding-mobile { padding-left: 20px !important; padding-right: 20px !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background wrapper table -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f4f6f8; table-layout: fixed;">
+        <tr>
+            <td align="center" style="padding: 40px 0;">
+                
+                <!-- Main Container Table (600px standard width) -->
+                <table border="0" cellpadding="0" cellspacing="0" width="600" class="wrapper" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                    
+                    <!-- HEADER: Logo/Brand Name -->
+                    <tr>
+                        <td align="center" style="background-color: #4F46E5; padding: 30px 20px;">
+                            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.5px;">Finance API</h1>
+                        </td>
+                    </tr>
+
+                    <!-- BODY CONTENT -->
+                    <tr>
+                        <td class="padding-mobile" style="padding: 40px 40px 30px 40px; text-align: left;">
+                            <h2 style="color: #1F2937; margin: 0 0 16px 0; font-size: 24px; font-weight: 600; line-height: 30px;">
+                                Welcome back, {{user_name}}! 👋
+                            </h2>
+                            <p style="color: #4B5563; font-size: 16px; line-height: 24px; margin: 0 0 20px 0;">
+                                You just logged in successfully. Your account is secure and ready to go. To explore your dashboard, click the button below.
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- CALL TO ACTION (CTA) BUTTON -->
+                    <tr>
+                        <td class="padding-mobile" align="center" style="padding: 0 40px 40px 40px;">
+                            <table border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center" style="border-radius: 6px; background-color: #4F46E5;">
+                                        <a href="https://yourplatform.com" target="_blank" style="border: 1px solid #4F46E5; border-radius: 6px; color: #ffffff; display: inline-block; font-size: 16px; font-weight: 600; padding: 14px 28px; text-decoration: none; -webkit-text-size-adjust: none; mso-padding-alt: 0px;">
+                                            Go to Dashboard
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- SECONDARY CONTENT / NEXT STEPS -->
+                    <tr>
+                        <td class="padding-mobile" style="padding: 0 40px 40px 40px; border-top: 1px solid #E5E7EB; text-align: left;">
+                            <h3 style="color: #1F2937; margin: 30px 0 12px 0; font-size: 16px; font-weight: 600;">
+                                Three quick things you can do next:
+                            </h3>
+                            <ul style="margin: 0; padding-left: 20px; color: #4B5563; font-size: 15px; line-height: 24px;">
+                                <li style="margin-bottom: 8px;">Complete your user profile details.</li>
+                                <li style="margin-bottom: 8px;">Explore our step-by-step documentation guides.</li>
+                                <li style="margin-bottom: 0;">Join our community channels to meet others.</li>
+                            </ul>
+                            <p style="color: #4B5563; font-size: 15px; line-height: 24px; margin: 24px 0 0 0;">
+                                If you ever have any questions or need a hand, just reply directly to this email—our support team is always ready to help.
+                            </p>
+                            <p style="color: #4B5563; font-size: 15px; line-height: 24px; margin: 16px 0 0 0;">
+                                Cheers,<br><strong>The Finance API Team</strong>
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- FOOTER -->
+                    <tr>
+                        <td class="padding-mobile" style="background-color: #F9FAFB; padding: 30px 40px; text-align: center;">
+                            <p style="color: #9CA3AF; font-size: 13px; line-height: 18px; margin: 0 0 10px 0;">
+                                © 2026 Finance API. All rights reserved.
+                            </p>
+                            <p style="color: #9CA3AF; font-size: 13px; line-height: 18px; margin: 0;">
+                                Want to change how you receive these emails? You can <a href="https://yourplatform.com" style="color: #4F46E5; text-decoration: underline;">unsubscribe</a> at any time.
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+                <!-- End Main Container Table -->
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

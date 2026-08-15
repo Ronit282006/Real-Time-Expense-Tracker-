@@ -4,6 +4,7 @@ from sqlalchemy import (
     String,
     DateTime,
     ForeignKey,
+    Boolean,
     Enum as SQLEnum,
 )
 from sqlalchemy.orm import relationship
@@ -22,11 +23,17 @@ class Create_Account_Table(base):
     __tablename__ = "Account"
 
     profile_id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(20), nullable=False)
-    email = Column(String(20), nullable=False)
-    password = Column(String(20), nullable=False)
+    name = Column(String(100), nullable=False)
+    email = Column(String(255), nullable=False)
+    password = Column(String(255), nullable=False)
     mobile_number = Column(String(20), nullable=False)
-    re_enter_password = Column(String(20), nullable=False)
+    re_enter_password = Column(String(255), nullable=False)
+    role = Column(String(20), nullable=False, default="user", server_default="user")
+    is_active = Column(Boolean, nullable=False, default=True, server_default="true")
+    token_version = Column(Integer, nullable=False, default=0, server_default="0")
+    created_at = Column(DateTime, server_default=func.now(), nullable=False)
+    auth_provider = Column(String(20), nullable=False, default="local", server_default="local")
+    google_id = Column(String(255), nullable=True, unique=True)
 
     transactions = relationship("Transaction", back_populates="user")
 
@@ -54,3 +61,12 @@ class Transaction(base):
     updated_at = Column(DateTime, onupdate=func.now(), nullable=True)
 
     user = relationship("Create_Account_Table", back_populates="transactions")
+
+
+class Category(base):
+    __tablename__ = "Categories"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(50), unique=True, nullable=False)
+    is_active = Column(Boolean, nullable=False, default=True, server_default="true")
+    created_at = Column(DateTime, server_default=func.now(), nullable=False)

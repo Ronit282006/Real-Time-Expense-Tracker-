@@ -35,4 +35,34 @@ def get_current_user(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="User not found",
         )
+
+    if not user.is_active:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Account is deactivated",
+        )
+
+    # token_version (tv) claim must match the account's current version.
+    # Incrementing token_version forces all previously issued tokens to be revoked.
+    try:
+        token_version = int(payload.get("tv", 0))
+    except (TypeError, ValueError):
+        token_version = 0
+    if token_version != user.token_version:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token has been revoked",
+        )
+
     return user
+
+
+def get_current_admin(
+    current_user: Create_Account_Table = Depends(get_current_user),
+) -> Create_Account_Table:
+    if current_user.role != "admin":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Admin privileges required",
+        )
+    return current_user

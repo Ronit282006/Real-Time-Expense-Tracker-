@@ -11,12 +11,27 @@ from app.crud.transaction import (
 )
 
 
+import redis
+from app.Dashboard.service import invalidate_dashboard_cache
+from app.config import settings
+
+def _invalidate_cache(user_id: int):
+    client = redis.Redis.from_url(settings.REDIS_URL, decode_responses=True)
+    try:
+        invalidate_dashboard_cache(user_id, client)
+    except Exception:
+        pass  # Fail gracefully if Redis is down
+    finally:
+        client.close()
+
 def create_transaction(
     db: Session,
     transaction: CreateTransaction,
     current_user: Create_Account_Table,
 ) -> Transaction:
-    return crud_create_transaction(db, transaction, user_id=current_user.id)
+    result = crud_create_transaction(db, transaction, user_id=current_user.id)
+    _invalidate_cache(current_user.id)
+    return result
 
 
 def get_transactions(
@@ -42,9 +57,11 @@ def update_transaction(
     transaction: UpdateTransaction,
     current_user: Create_Account_Table,
 ) -> Transaction:
-    return crud_update_transaction(
+    result = crud_update_transaction(
         db, transaction_id, transaction, user_id=current_user.id
     )
+    _invalidate_cache(current_user.id)
+    return result
 
 
 def delete_transaction(
@@ -52,4 +69,6 @@ def delete_transaction(
     transaction_id: int,
     current_user: Create_Account_Table,
 ) -> Transaction:
-    return crud_delete_transaction(db, transaction_id, user_id=current_user.id)
+    result = crud_delete_transaction(db, transaction_id, user_id=current_user.id)
+    _invalidate_cache(current_user.id)
+    return result

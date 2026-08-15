@@ -3,6 +3,7 @@ import logging
 
 import redis
 
+from app.config import settings
 from app.database.database import session_local
 from app.Import.parser import parse_file
 from app.Import.column_mapper import map_columns, apply_mapping, check_required_columns
@@ -113,7 +114,7 @@ def process_import_background(
 
 def _delete_dashboard_cache(user_id: int) -> None:
     try:
-        client = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
+        client = redis.Redis.from_url(settings.REDIS_URL, decode_responses=True)
         client.delete(f"dashboard:{user_id}")
         client.close()
     except Exception:

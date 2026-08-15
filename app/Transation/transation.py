@@ -30,7 +30,7 @@ async def get_transactions(
     start_date: Optional[date] = Query(None),
     end_date: Optional[date] = Query(None),
     search: Optional[str] = Query(None),
-    sort_by: str = Query("date", pattern="^(amount|date|category|type)$"),
+    sort_by: str = Query("transaction_datetime", pattern="^(amount|date|category|type|transaction_datetime)$"),
     order: str = Query("desc", pattern="^(asc|desc)$"),
     db: Session = Depends(get_db), 
     token: str = Depends(oauth2_scheme)
