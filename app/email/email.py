@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import httpx
+from fastapi import HTTPException
 
 from app.config import settings
 
@@ -71,22 +72,27 @@ async def _send_via_brevo(to: str, subject: str, html_body: str) -> None:
 
 
 async def send_email(to: str, subject: str, html_body: str):
-    if settings.BREVO_API_KEY.strip():
-        await _send_via_brevo(to, subject, html_body)
-        return
+    try:
+        if settings.BREVO_API_KEY.strip():
+            await _send_via_brevo(to, subject, html_body)
+            return
 
-    if settings.RESEND_API_KEY.strip():
-        await _send_via_resend(to, subject, html_body)
-        return
+        if settings.RESEND_API_KEY.strip():
+            await _send_via_resend(to, subject, html_body)
+            return
 
-    from fastapi_mail import FastMail, MessageSchema, MessageType
-    from app.email.email_config import conf
+        from fastapi_mail import FastMail, MessageSchema, MessageType
+        from app.email.email_config import conf
 
-    message = MessageSchema(
-        subject=subject,
-        recipients=[to],
-        body=html_body,
-        subtype=MessageType.html,
-    )
-    fm = FastMail(conf)
-    await fm.send_message(message)
+        message = MessageSchema(
+            subject=subject,
+            recipients=[to],
+            body=html_body,
+            subtype=MessageType.html,
+        )
+        fm = FastMail(conf)
+        await fm.send_message(message)
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"Email delivery failed: {e}")
