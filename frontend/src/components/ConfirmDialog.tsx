@@ -19,18 +19,19 @@ export default function ConfirmDialog({ open, title, message, confirmLabel = 'De
           style={{
             position: 'fixed', inset: 0, zIndex: 100,
             background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16,
           }}
           onClick={onCancel}
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
-            style={{ background: '#fff', borderRadius: 20, padding: 32, maxWidth: 400, width: '90%', boxShadow: '0 20px 60px rgba(0,0,0,0.15)' }}
+            className="p-5 md:p-8"
+            style={{ background: '#fff', borderRadius: 20, maxWidth: 400, width: '100%', boxShadow: '0 20px 60px rgba(0,0,0,0.15)', boxSizing: 'border-box' }}
             onClick={e => e.stopPropagation()}
           >
             <h3 style={{ margin: '0 0 8px', fontSize: 18, fontWeight: 600 }}>{title}</h3>
             <p style={{ margin: '0 0 24px', fontSize: 14, color: '#6b7280', lineHeight: 1.5 }}>{message}</p>
-            <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end' }}>
+            <div className="flex flex-col sm:flex-row" style={{ gap: 12, justifyContent: 'flex-end' }}>
               <button
                 onClick={onCancel}
                 disabled={loading}

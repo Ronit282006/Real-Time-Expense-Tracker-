@@ -51,7 +51,7 @@ export default function Dashboard() {
       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
-          style={{ flex: 2, minWidth: 300, background: '#fff', borderRadius: 20, padding: 24, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
+          style={{ flex: 2, minWidth: 260, background: '#fff', borderRadius: 20, padding: 24, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
         >
           <h3 style={{ margin: '0 0 16px', fontSize: 16, fontWeight: 600 }}>Monthly Income vs Expense</h3>
           <ResponsiveContainer width="100%" height={280}>
@@ -93,7 +93,7 @@ export default function Dashboard() {
       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
-          style={{ flex: 1, minWidth: 300, background: '#fff', borderRadius: 20, padding: 24, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
+          style={{ flex: 1, minWidth: 260, background: '#fff', borderRadius: 20, padding: 24, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
         >
           <h3 style={{ margin: '0 0 16px', fontSize: 16, fontWeight: 600 }}>Income Trend</h3>
           <ResponsiveContainer width="100%" height={200}>
@@ -108,7 +108,7 @@ export default function Dashboard() {
 
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-          style={{ flex: 1, minWidth: 300, background: '#fff', borderRadius: 20, padding: 24, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
+          style={{ flex: 1, minWidth: 260, background: '#fff', borderRadius: 20, padding: 24, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
         >
           <h3 style={{ margin: '0 0 16px', fontSize: 16, fontWeight: 600 }}>Expense Trend</h3>
           <ResponsiveContainer width="100%" height={200}>
@@ -130,8 +130,8 @@ export default function Dashboard() {
         {data.recent_transactions.length === 0 ? (
           <p style={{ color: '#9ca3af', fontSize: 14 }}>No transactions yet.</p>
         ) : (
-          <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+          <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+            <table style={{ width: '100%', minWidth: 620, borderCollapse: 'collapse', fontSize: 14 }}>
               <thead>
                 <tr style={{ borderBottom: '1px solid #f3f4f6' }}>
                   {['Type', 'Amount', 'Category', 'Note', 'Date'].map(h => (

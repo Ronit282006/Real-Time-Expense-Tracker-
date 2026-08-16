@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GoogleLogin } from '@react-oauth/google';
 import { registerApi, verifyRegistrationOtpApi, resendRegistrationOtpApi, googleLoginApi, getMeApi } from '../api/client';
+import GoogleSignInButton from '../components/GoogleSignInButton';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 
@@ -149,9 +149,10 @@ export default function Register() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
+            className="p-6 md:p-10"
             style={{
-              background: '#fff', borderRadius: 28, padding: 40, maxWidth: 420, width: '100%',
-              boxShadow: '0 4px 24px rgba(0,0,0,0.06)', position: 'relative' as const,
+              background: '#fff', borderRadius: 28, maxWidth: 420, width: '100%',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.06)', position: 'relative' as const, boxSizing: 'border-box',
             }}
           >
             <div style={{ textAlign: 'center', marginBottom: 28 }}>
@@ -199,14 +200,9 @@ export default function Register() {
 
             {/* Google Sign-In */}
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <GoogleLogin
+              <GoogleSignInButton
                 onSuccess={handleGoogleSuccess}
-                onError={() => toast.error('Google sign-in failed')}
-                theme="outline"
-                size="large"
-                width="320"
                 text="signup_with"
-                shape="pill"
               />
             </div>
 
@@ -255,9 +251,10 @@ export default function Register() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
+            className="p-6 md:p-10"
             style={{
-              background: '#fff', borderRadius: 28, padding: 40, maxWidth: 420, width: '100%',
-              boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
+              background: '#fff', borderRadius: 28, maxWidth: 420, width: '100%',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.06)', boxSizing: 'border-box',
             }}
           >
             <div style={{ textAlign: 'center', marginBottom: 28 }}>
@@ -270,7 +267,7 @@ export default function Register() {
 
             {/* OTP Input Boxes */}
             <div
-              style={{ display: 'flex', justifyContent: 'center', gap: 10, marginBottom: 24 }}
+              style={{ display: 'flex', justifyContent: 'center', gap: 6, marginBottom: 24 }}
               onPaste={handleOtpPaste}
             >
               {otpDigits.map((digit, i) => (
@@ -284,7 +281,8 @@ export default function Register() {
                   onChange={e => handleOtpChange(i, e.target.value)}
                   onKeyDown={e => handleOtpKeyDown(i, e)}
                   style={{
-                    width: 48, height: 56, textAlign: 'center', fontSize: 22, fontWeight: 700,
+                    flex: 1, minWidth: 0, maxWidth: 52, aspectRatio: '1', textAlign: 'center',
+                    fontSize: 'clamp(18px, 5vw, 22px)', fontWeight: 700,
                     border: digit ? '2px solid #7c3aed' : '2px solid #e5e7eb',
                     borderRadius: 12, outline: 'none', transition: 'border-color 0.2s',
                     color: '#1f2937', background: digit ? '#f5f3ff' : '#fff',

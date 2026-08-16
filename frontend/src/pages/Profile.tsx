@@ -145,7 +145,8 @@ export default function Profile() {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ maxWidth: 560, margin: '0 auto' }}>
       <motion.div
         initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
-        style={{ background: '#fff', borderRadius: 24, padding: 32, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
+        className="p-6 md:p-8"
+        style={{ background: '#fff', borderRadius: 24, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 28 }}>
           <div style={{
@@ -203,7 +204,7 @@ export default function Profile() {
             />
           </div>
 
-          <div style={{ display: 'flex', gap: 12, marginTop: 8 }}>
+          <div className="flex flex-col sm:flex-row" style={{ gap: 12, marginTop: 8 }}>
             <motion.button type="submit" disabled={saving} whileTap={{ scale: 0.97 }}
               style={{
                 flex: 1, padding: '12px', borderRadius: 12, border: 'none',
@@ -214,7 +215,7 @@ export default function Profile() {
             </motion.button>
             <motion.button type="button" whileTap={{ scale: 0.97 }} onClick={() => setDeleteOpen(true)}
               style={{
-                padding: '12px 24px', borderRadius: 12, border: '1px solid #fecaca',
+                flex: 1, padding: '12px 24px', borderRadius: 12, border: '1px solid #fecaca',
                 background: '#fff', color: '#ef4444', fontSize: 14, fontWeight: 500, cursor: 'pointer',
               }}>
               Delete Account
@@ -243,9 +244,10 @@ export default function Profile() {
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ duration: 0.3 }}
               onClick={e => e.stopPropagation()}
+              className="p-6 md:p-9"
               style={{
-                background: '#fff', borderRadius: 24, padding: 36, maxWidth: 400, width: '100%',
-                boxShadow: '0 20px 60px rgba(0,0,0,0.15)',
+                background: '#fff', borderRadius: 24, maxWidth: 400, width: '100%',
+                boxShadow: '0 20px 60px rgba(0,0,0,0.15)', boxSizing: 'border-box',
               }}
             >
               <div style={{ textAlign: 'center', marginBottom: 24 }}>
@@ -258,7 +260,7 @@ export default function Profile() {
 
               {/* OTP Inputs */}
               <div
-                style={{ display: 'flex', justifyContent: 'center', gap: 8, marginBottom: 20 }}
+                style={{ display: 'flex', justifyContent: 'center', gap: 6, marginBottom: 20 }}
                 onPaste={handleOtpPaste}
               >
                 {otpDigits.map((digit, i) => (
@@ -272,7 +274,8 @@ export default function Profile() {
                     onChange={e => handleOtpChange(i, e.target.value)}
                     onKeyDown={e => handleOtpKeyDown(i, e)}
                     style={{
-                      width: 44, height: 52, textAlign: 'center', fontSize: 20, fontWeight: 700,
+                      flex: 1, minWidth: 0, maxWidth: 48, aspectRatio: '1', textAlign: 'center',
+                      fontSize: 'clamp(16px, 5vw, 20px)', fontWeight: 700,
                       border: digit ? '2px solid #7c3aed' : '2px solid #e5e7eb',
                       borderRadius: 10, outline: 'none', transition: 'border-color 0.2s',
                       color: '#1f2937', background: digit ? '#f5f3ff' : '#fff',

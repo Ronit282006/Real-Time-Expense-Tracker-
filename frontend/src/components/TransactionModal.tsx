@@ -72,7 +72,8 @@ export default function TransactionModal({ open, onClose, onSave, transaction }:
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            style={{ background: '#fff', borderRadius: 24, padding: 32, maxWidth: 480, width: '100%', boxShadow: '0 20px 60px rgba(0,0,0,0.15)' }}
+            className="p-5 md:p-8"
+            style={{ background: '#fff', borderRadius: 24, maxWidth: 480, width: '100%', boxShadow: '0 20px 60px rgba(0,0,0,0.15)', boxSizing: 'border-box' }}
             onClick={e => e.stopPropagation()}
           >
             <h2 style={{ margin: '0 0 20px', fontSize: 20, fontWeight: 700 }}>{transaction ? 'Edit Transaction' : 'Add Transaction'}</h2>
@@ -144,7 +145,7 @@ export default function TransactionModal({ open, onClose, onSave, transaction }:
                 />
               </div>
 
-              <div style={{ display: 'flex', gap: 12 }}>
+              <div className="flex flex-col sm:flex-row" style={{ gap: 12 }}>
                 <div style={{ flex: 1 }}>
                   <label style={{ fontSize: 13, fontWeight: 500, color: '#6b7280', marginBottom: 6, display: 'block' }}>Date</label>
                   <input
@@ -173,7 +174,7 @@ export default function TransactionModal({ open, onClose, onSave, transaction }:
                 </div>
               </div>
 
-              <div style={{ display: 'flex', gap: 12, marginTop: 8 }}>
+              <div className="flex flex-col sm:flex-row" style={{ gap: 12, marginTop: 8 }}>
                 <button
                   type="button"
                   onClick={onClose}

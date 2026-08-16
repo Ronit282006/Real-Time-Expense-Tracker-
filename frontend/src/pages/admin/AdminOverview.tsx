@@ -54,7 +54,7 @@ export default function AdminOverview() {
       </div>
 
       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} style={{ flex: 1, minWidth: 300, background: '#fff', borderRadius: 20, padding: 24, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} style={{ flex: 1, minWidth: 260, background: '#fff', borderRadius: 20, padding: 24, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
           <h3 style={{ margin: '0 0 16px', fontSize: 16, fontWeight: 600 }}>New Users per Month</h3>
           <ResponsiveContainer width="100%" height={260}>
             <BarChart data={stats.new_users_per_month}>
@@ -66,7 +66,7 @@ export default function AdminOverview() {
           </ResponsiveContainer>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} style={{ flex: 1, minWidth: 300, background: '#fff', borderRadius: 20, padding: 24, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} style={{ flex: 1, minWidth: 260, background: '#fff', borderRadius: 20, padding: 24, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
           <h3 style={{ margin: '0 0 16px', fontSize: 16, fontWeight: 600 }}>Usage Trends</h3>
           <ResponsiveContainer width="100%" height={260}>
             <LineChart data={stats.usage_trends}>
@@ -80,7 +80,7 @@ export default function AdminOverview() {
       </div>
 
       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} style={{ flex: 1, minWidth: 300, background: '#fff', borderRadius: 20, padding: 24, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} style={{ flex: 1, minWidth: 260, background: '#fff', borderRadius: 20, padding: 24, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
           <h3 style={{ margin: '0 0 16px', fontSize: 16, fontWeight: 600 }}>Top Categories by Amount</h3>
           <ResponsiveContainer width="100%" height={260}>
             <BarChart data={stats.top_categories}>
@@ -92,12 +92,13 @@ export default function AdminOverview() {
           </ResponsiveContainer>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} style={{ flex: 1, minWidth: 300, background: '#fff', borderRadius: 20, padding: 24, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} style={{ flex: 1, minWidth: 260, background: '#fff', borderRadius: 20, padding: 24, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
           <h3 style={{ margin: '0 0 16px', fontSize: 16, fontWeight: 600 }}>Top Spenders</h3>
           {stats.top_spenders.length === 0 ? (
             <p style={{ color: '#9ca3af', fontSize: 14 }}>No data yet.</p>
           ) : (
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+            <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+              <table style={{ width: '100%', minWidth: 460, borderCollapse: 'collapse', fontSize: 14 }}>
               <thead>
                 <tr style={{ borderBottom: '1px solid #f3f4f6' }}>
                   {['User', 'Income', 'Expense', 'Txns'].map(h => (
@@ -119,6 +120,7 @@ export default function AdminOverview() {
                 ))}
               </tbody>
             </table>
+            </div>
           )}
         </motion.div>
       </div>

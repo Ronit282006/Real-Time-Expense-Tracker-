@@ -86,8 +86,8 @@ export default function AdminCategories() {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       <div style={{ background: '#fff', borderRadius: 20, padding: 20, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
         <h3 style={{ margin: '0 0 12px', fontSize: 16, fontWeight: 600 }}>Add Category</h3>
-        <div style={{ display: 'flex', gap: 12 }}>
-          <input placeholder="Category name" value={newName} onChange={e => setNewName(e.target.value)} style={{ ...inputStyle, flex: 1, maxWidth: 400 }} />
+        <div className="flex flex-col sm:flex-row" style={{ gap: 12 }}>
+          <input placeholder="Category name" value={newName} onChange={e => setNewName(e.target.value)} style={{ ...inputStyle, flex: 1, minWidth: 0, maxWidth: 400 }} />
           <button onClick={addCategory} disabled={adding} style={btn('#7c3aed')}>{adding ? 'Adding…' : 'Add Category'}</button>
         </div>
       </div>
@@ -110,10 +110,12 @@ export default function AdminCategories() {
                   <td style={{ padding: '12px', color: '#9ca3af' }}>{c.id}</td>
                   <td style={{ padding: '12px' }}>
                     {renameId === c.id ? (
-                      <div style={{ display: 'flex', gap: 8 }}>
-                        <input value={renameValue} onChange={e => setRenameValue(e.target.value)} autoFocus style={inputStyle} />
-                        <button onClick={() => saveRename(c)} style={btn('#7c3aed')}>Save</button>
-                        <button onClick={() => setRenameId(null)} style={btn('#6b7280')}>Cancel</button>
+                      <div className="flex flex-col sm:flex-row" style={{ gap: 8 }}>
+                        <input value={renameValue} onChange={e => setRenameValue(e.target.value)} autoFocus style={{ ...inputStyle, flex: 1, minWidth: 0 }} />
+                        <div style={{ display: 'flex', gap: 8 }}>
+                          <button onClick={() => saveRename(c)} style={btn('#7c3aed')}>Save</button>
+                          <button onClick={() => setRenameId(null)} style={btn('#6b7280')}>Cancel</button>
+                        </div>
                       </div>
                     ) : (
                       <span style={{ fontWeight: 600, color: '#374151' }}>{c.name}</span>

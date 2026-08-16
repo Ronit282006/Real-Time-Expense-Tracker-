@@ -39,7 +39,8 @@ export default function ImportPage() {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ maxWidth: 600, margin: '0 auto' }}>
       <motion.div
         initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
-        style={{ background: '#fff', borderRadius: 24, padding: 32, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
+        className="p-5 md:p-8"
+        style={{ background: '#fff', borderRadius: 24, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
       >
         <h1 style={{ fontSize: 22, fontWeight: 700, margin: '0 0 4px' }}>Import Transactions</h1>
         <p style={{ fontSize: 14, color: '#9ca3af', margin: '0 0 24px' }}>Upload a CSV or Excel file to bulk import transactions</p>

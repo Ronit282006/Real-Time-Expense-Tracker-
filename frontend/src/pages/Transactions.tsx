@@ -145,8 +145,8 @@ export default function Transactions() {
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
             style={{ background: '#fff', borderRadius: 20, overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
           >
-            <div style={{ overflowX: 'auto' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+            <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+              <table style={{ width: '100%', minWidth: 680, borderCollapse: 'collapse', fontSize: 14 }}>
                 <thead>
                   <tr style={{ borderBottom: '1px solid #f3f4f6', background: '#fafafa' }}>
                     {['Type', 'Amount', 'Category', 'Note', 'Date', 'Actions'].map(h => (
@@ -201,7 +201,7 @@ export default function Transactions() {
             </div>
           </motion.div>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 14, color: '#6b7280' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12, fontSize: 14, color: '#6b7280' }}>
             <span>Page {data.page} of {data.total_pages} ({data.total_records} records)</span>
             <div style={{ display: 'flex', gap: 8 }}>
               <button disabled={page <= 1} onClick={() => setPage(p => p - 1)}

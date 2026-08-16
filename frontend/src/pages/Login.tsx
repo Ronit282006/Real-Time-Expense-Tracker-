@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GoogleLogin } from '@react-oauth/google';
 import { loginApi, getMeApi, googleLoginApi } from '../api/client';
+import GoogleSignInButton from '../components/GoogleSignInButton';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 
@@ -62,9 +62,10 @@ export default function Login() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
+        className="p-6 md:p-10"
         style={{
-          background: '#fff', borderRadius: 28, padding: 40, maxWidth: 400, width: '100%',
-          boxShadow: '0 4px 24px rgba(0,0,0,0.06)', position: 'relative' as const,
+          background: '#fff', borderRadius: 28, maxWidth: 400, width: '100%',
+          boxShadow: '0 4px 24px rgba(0,0,0,0.06)', position: 'relative' as const, boxSizing: 'border-box',
         }}
       >
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
@@ -125,14 +126,9 @@ export default function Login() {
 
         {/* Google Sign-In */}
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <GoogleLogin
+          <GoogleSignInButton
             onSuccess={handleGoogleSuccess}
-            onError={() => toast.error('Google sign-in failed')}
-            theme="outline"
-            size="large"
-            width="320"
             text="signin_with"
-            shape="pill"
           />
         </div>
 
