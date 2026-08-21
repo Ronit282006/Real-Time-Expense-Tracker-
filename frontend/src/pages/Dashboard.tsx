@@ -31,7 +31,7 @@ export default function Dashboard() {
   if (loading) return <FullPageLoader />;
   if (!data) return <p style={{ textAlign: 'center', color: '#9ca3af', padding: 40 }}>No data available.</p>;
 
-  const fm = (n: number) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(n);
+  const fm = (n: number) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(n);
   const tooltipFm = (v: any) => fm(typeof v === 'number' ? v : 0);
 
   return (
